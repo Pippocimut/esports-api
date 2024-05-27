@@ -1,24 +1,31 @@
 # Esports tournament system
 
-# Event Booking System
 This is a API for a e-sport platform that allow players to be registered, put in matchups, record the outcome of matchups and print a leaderboard
 
 ## Getting started
+
 ### Prerequisites
-Download Node.js and npm here: https://nodejs.org/en/
+
+Download Node.js and npm here: <https://nodejs.org/en/>
 [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) connection string
 
 ### Installation
+
 1. `npm install`
+
 2. Create a .env file in root project folder
-```
-DB_URI={your databse connection string}
-PORT={preferred port}
-```  
-3. `npm start` 
-4. http://localhost:{your port} is the url of the app, access it with any REST client exp. [Postman](https://www.postman.com/downloads/).
+
+    ```text
+    DB_URI={your databse connection string}
+    PORT={preferred port}
+    ```  
+
+3. `npm start`
+
+4. <http://localhost:yourport> is the url of the app, access it with any REST client exp. [Postman](https://www.postman.com/downloads/).
 
 ### Testing
+
 The tests are implemented in `src/test` using [Mocha](https://github.com/mochajs/mocha). `npm test` to run the test files.
 
 ## API Routes
@@ -55,7 +62,9 @@ The tests are implemented in `src/test` using [Mocha](https://github.com/mochajs
 - [supertest](https://github.com/visionmedia/supertest) - A high-level abstraction for testing HTTP
 
 ## Author
+
 - Teodoro Capacchione
 
 ## License
+
 This project is licensed under the terms of the [MIT license](./LICENCE.txt).
