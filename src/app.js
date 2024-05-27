@@ -17,8 +17,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use("/player", playerRoutes);
-app.use("/ranking", rankingRoutes);
-app.use("/", matchupRoutes);
+app.use("/leaderboard", rankingRoutes);
+app.use("/matchup", matchupRoutes);
 
 //Returns a custom error if reached
 app.use("/", errorController.genericErrorHandler);

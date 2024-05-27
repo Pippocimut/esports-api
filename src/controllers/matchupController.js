@@ -109,12 +109,18 @@ const findQuery = (startDate, endDate, player1, player2) => {
 };
 exports.cancelMatchup = async (req, res, next) => {
   try {
-    const matchup = await Matchup.findById(req.params.id);
-    matchup.status = "cancelled";
+    const matchup = await Matchup.findOneAndUpdate({_id:req.params.id, status:"pending"},{
+      $set: {
+        status: "cancelled",
+      },
+    });
 
-    await matchup.save();
+    if (!matchup) {
+      return next(new CustomError(404, "Matchup not found"));
+    }
+
     res.status(200).json({
-      message: "Matchup Cancelled",
+      message: "Matchup Cancelled"
     });
   } catch (err) {
     next(err); // Return the error without custom error

@@ -6,12 +6,16 @@ const dotenv = require("dotenv");
 const sinonChai = require("sinon-chai");
 const chai = require("chai");
 const Matchup = require("../../models/Matchup");
+const Player = require("../../models/Player");
+const Ranking = require("../../models/Ranking");
 
 chai.use(sinonChai);
 dotenv.config();
 
-describe("Integration Testing: Matchup Routes", function () {
+describe("Integration Testing: Player Routes", function () {
   this.timeout(10000);
+  let player1;
+  let player2;
 
   before(async () => {
     await mongoose.disconnect();
@@ -19,61 +23,56 @@ describe("Integration Testing: Matchup Routes", function () {
     await mongoose.connect(
       process.env.TESTING_DB_URI || "mongodb://localhost/esports"
     );
-
-    Matchup.collection.drop();
   });
+  describe("GET /players", () => {
+    it("should get all players", async () => {
+      await Player.create({ username: "player1" });
 
-  it("should get all matchups from storage and populate them with just username", async () => {
-    const res = await request(app).get("/matchups");
-    expect(res.status).to.equal(200);
-    expect(res.body.matchups).to.be.an("array");
-    expect(res.body.message).to.equal("All Matchups");
-    res.body.matchups.forEach((matchup) => {
-      expect(matchup.player1).to.be.a("string");
-      expect(matchup.player2).to.be.a("string");
+      const res = await request(app).get("/player");
+      expect(res.status).to.equal(200);
+
     });
   });
+  describe("GET /player/:id", () => {
+    it("should return a single player - expected to succeed", async () => {
+      const player = await Player.create({ username: "player1" });
 
-  it("should record a matchup and return a matchup ID - expected to succeed", async () => {
-
-    const matchupData = {
-      player1: "player1",
-      player2: "player2",
-      date: "2029-10-10 12:00:00",
-      game: "game",
-    };
-
-    const res = await request(app).post("/matchup").send(matchupData);
-    expect(res.status).to.equal(201);
-    expect(res.body.message).to.equal("Matchup Recorded Successfully");
+      const res = await request(app).get(`/player/${player._id}`);
+      expect(res.status).to.equal(200);
+    });
+    it("should return a 404 error if the player is not found", async () => {
+      const res = await request(app).get(`/player/6654629e30e18d4d8647b478`);
+      expect(res.status).to.equal(404);
+    });
   });
-  /* 
-  it("should cancel a matchup - expected to succeed", async () => {
-    const matchup = await Matchup.create({ status: "pending" });
-
-    const res = await request(app).put(`/matchups/${matchup._id}/cancel`);
-
-    expect(res.status).to.equal(201);
-    expect(res.body.message).to.equal("Matchup Cancelled");
-
-    const updatedMatchup = await Matchup.findById(matchup._id);
-    expect(updatedMatchup.status).to.equal("cancelled");
-  });
-
-  it("should return a single matchup and populate it with its players - expected to succeed", async () => {
-    const matchup = await Matchup.create({
-      player1: "player1",
-      player2: "player2",
+  describe("POST /player", () => {
+    it("should register a player and create a ranking for them - expected to succeed", async () => {
+      await Player.collection.drop();
+      await Ranking.collection.drop();
+      const playerData = {
+        username: "player1"
+      };
+      const res = await request(app).post("/player").send(playerData);
+      const playerRanking = await Ranking.findOne({ player: res.body.player});
+      expect(playerRanking).to.not.be.null;
+      expect(res.status).to.equal(201);
     });
 
-    const res = await request(app).get(`/matchups/${matchup._id}`);
+    it("should return a 409 error if a player with the same username is found", async () => {
+      await Player.collection.drop();
+      const playerData = {
+        username: "player1"
+      };
+      await request(app).post("/player").send(playerData);
+      const res = await request(app).post("/player").send(playerData);
+      expect(res.status).to.equal(409);
+    });
+    
+  })
 
-    expect(res.status).to.equal(200);
-    expect(res.body.matchup.player1).to.be.a("string");
-    expect(res.body.matchup.player2).to.be.a("string");
-  });
- */
   after(async () => {
+    Player.collection.drop();
+    Ranking.collection.drop();
     await mongoose.disconnect();
   });
 });

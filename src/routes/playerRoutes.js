@@ -7,7 +7,7 @@ router
   .route("/")
   .get(playerController.getAllPlayers)
   .post(
-    body("username").isString().notEmpty(),
+    body("username").isString().notEmpty().withMessage("Username is required"),
     reportErrors,
     playerController.registerPlayer
   );

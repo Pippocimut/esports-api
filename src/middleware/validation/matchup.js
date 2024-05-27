@@ -1,25 +1,17 @@
 const { body } = require("express-validator");
-const CustomError = require("../../utils/customError");
 
 exports.recordMatchupChecks = [
-  body("player1").isString().notEmpty(),
-  body("player2").isString().notEmpty(),
-  body("date").isString().notEmpty(),
-  body("game").isString().notEmpty(),
+  body("player1").isString().notEmpty().withMessage("Player 1 must be a string"),
+  body("player2").isString().notEmpty().withMessage("Player 2 must be a string"),
+  body("date").isString().notEmpty().withMessage("Date must be a string"),
+  body("game").isString().notEmpty().withMessage("Game must be a string"),
   body("date")
     .custom((value) => !isNaN(Date.parse(value)))
     .withMessage("Date must be a valid date string"),
   body("date")
     .isISO8601()
     .withMessage("Date must be a valid ISO 8601 date string"),
-  body("date").custom((value, { req }) => {
-    const date = new Date(value);
-    if (date < new Date()) {
-      throw new CustomError(401, "Date cannot be in the past");
-    }
-    return true;
-  })
+  body("date")
+    .custom((value) => new Date(value) >= new Date())
+    .withMessage("Date must be in the future"),
 ];
-
-
-

@@ -58,10 +58,11 @@ describe("Unit Testing: Player Controller", () => {
     });
   });
   describe("Tests regarding registering players", () => {
-    it("Should record a matchup and return a matchup ID - expected to succeed", async function () {
-      findOneStub = sinon.stub(Player, "findOne").resolves({ _id: 1 });
+    it("Should register a player and return its ID - expected to succeed", async function () {
+      findOneStub = sinon.stub(Player, "findOne").resolves(null);
       saveStub = sinon.stub(Player.prototype, "save").resolves();
       saveRankingStub = sinon.stub(Ranking.prototype, "save").resolves();
+
       try{
         Player.deleteOne({ username: "test" });
       }catch(e){

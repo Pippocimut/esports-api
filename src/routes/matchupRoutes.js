@@ -5,7 +5,7 @@ const outcomeController = require("../controllers/outcomeController");
 const reportErrors= require("../middleware/validation/reportErrors");
 const matchupValidation = require("../middleware/validation/matchup");
 
-router.get("/matchups", matchupController.getAllMatchups);
+router.get("/", matchupController.getAllMatchups);
 
 /* router.get(
   "/matchups/:player",
@@ -16,7 +16,7 @@ router.get("/matchups", matchupController.getAllMatchups);
 
 router
   .route(
-    "/matchup/:id",
+    "/:id",
     param("id")
     .isMongoId()
     .withMessage("ID must be a valid MongoDB ID"),
@@ -26,14 +26,14 @@ router
   .delete(matchupController.cancelMatchup);
 
 router.post(
-  "/matchup",
+  "/",
   matchupValidation.recordMatchupChecks,
   reportErrors,
   matchupController.recordMatchup
 );
 
 router.post(
-  "/matchup/:id/outcome",
+  "/:id/outcome",
   param("id")
     .isMongoId()
     .withMessage("ID must be a valid MongoDB ID"),

@@ -31,6 +31,14 @@ exports.getPlayer = async (req, res, next) => {
 };
 exports.registerPlayer = async (req, res, next) => {
   try {
+    const existingPlayer = await Player.findOne({
+      username: req.body.username,
+    });
+    if (existingPlayer) {
+      return res.status(409).json({
+        message: "Player already exists",
+      });
+    }
     const player = new Player({
       username: req.body.username,
     });
@@ -40,9 +48,9 @@ exports.registerPlayer = async (req, res, next) => {
       player: player._id,
     });
     await ranking.save();
-
     res.status(201).json({
       message: "Player Registered",
+      player: player._id,
     });
   } catch (err) {
     next(new CustomError(500, err));

@@ -109,6 +109,7 @@ describe("Unit Testing: Matchup Controller", () => {
     it("should cancel a matchup - expected to succeed", async function () {
       const mockMatchup = { status: "pending", save: sinon.stub().resolves() };
       findByIdStub = sinon.stub(Matchup, "findById").resolves(mockMatchup);
+      let updatedMatchup = sinon.stub(Matchup, "findOneAndUpdate").resolves()
       const req = {
         params: {
           id: "1",
@@ -127,8 +128,8 @@ describe("Unit Testing: Matchup Controller", () => {
 
       await matchupController.cancelMatchup(req, res, () => {});
 
-      expect(mockMatchup.status).to.equal("cancelled");
-      expect(mockMatchup.save).to.have.been.calledOnce;
+      expect(updatedMatchup).to.have.been.calledOnce;
+      updatedMatchup.restore();
     });
 
     it("Should properly handle errors during validation - expected to fail", function () {
