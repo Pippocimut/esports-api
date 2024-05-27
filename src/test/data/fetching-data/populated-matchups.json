@@ -1,0 +1,134 @@
+[
+    {
+        "player1": {
+            "id": {
+                "_id": "6652e854445a48b00b5d7c48",
+                "username": "testdude",
+                "__v": 0
+            }
+        },
+        "player2": {
+            "id": {
+                "_id": "6652e859445a48b00b5d7c4c",
+                "username": "testdude2",
+                "__v": 0
+            }
+        },
+        "_id": "6652e88c445a48b00b5d7c5a",
+        "date": "1995-12-17T03:24:02.000Z",
+        "game": "valorant",
+        "status": "pending",
+        "__v": 0
+    },
+    {
+        "player1": {
+            "id": {
+                "_id": "6652e854445a48b00b5d7c48",
+                "username": "testdude",
+                "__v": 0
+            }
+        },
+        "player2": {
+            "id": {
+                "_id": "6652e85d445a48b00b5d7c50",
+                "username": "testdude23",
+                "__v": 0
+            }
+        },
+        "_id": "6652e891445a48b00b5d7c5e",
+        "date": "1995-12-17T03:24:02.000Z",
+        "game": "valorant",
+        "status": "pending",
+        "__v": 0
+    },
+    {
+        "player1": {
+            "id": {
+                "_id": "6652e854445a48b00b5d7c48",
+                "username": "testdude",
+                "__v": 0
+            }
+        },
+        "player2": {
+            "id": {
+                "_id": "6652e860445a48b00b5d7c54",
+                "username": "testdude234",
+                "__v": 0
+            }
+        },
+        "_id": "6652e895445a48b00b5d7c62",
+        "date": "1995-12-17T03:24:02.000Z",
+        "game": "valorant",
+        "status": "pending",
+        "__v": 0
+    },
+    {
+        "player1": {
+            "id": {
+                "_id": "6652e859445a48b00b5d7c4c",
+                "username": "testdude2",
+                "__v": 0
+            },
+            "score": 0
+        },
+        "player2": {
+            "id": {
+                "_id": "6652e860445a48b00b5d7c54",
+                "username": "testdude234",
+                "__v": 0
+            },
+            "score": 3
+        },
+        "_id": "6652e898445a48b00b5d7c66",
+        "date": "1995-12-17T03:24:02.000Z",
+        "game": "valorant",
+        "status": "completed",
+        "__v": 0
+    },
+    {
+        "player1": {
+            "id": {
+                "_id": "6652e859445a48b00b5d7c4c",
+                "username": "testdude2",
+                "__v": 0
+            },
+            "score": 3
+        },
+        "player2": {
+            "id": {
+                "_id": "6652e85d445a48b00b5d7c50",
+                "username": "testdude23",
+                "__v": 0
+            },
+            "score": 3
+        },
+        "_id": "6652e89b445a48b00b5d7c6a",
+        "date": "1995-12-17T03:24:02.000Z",
+        "game": "valorant",
+        "status": "completed",
+        "__v": 0
+    },
+    {
+        "player1": {
+            "id": {
+                "_id": "6652e85d445a48b00b5d7c50",
+                "username": "testdude23",
+                "__v": 0
+            },
+            "score": 3
+        },
+        "player2": {
+            "id": {
+                "_id": "6652e860445a48b00b5d7c54",
+                "username": "testdude234",
+                "__v": 0
+            },
+            "score": 0
+        },
+        "_id": "6652e8a9445a48b00b5d7c6e",
+        "date": "1995-12-17T03:24:02.000Z",
+        "game": "valorant",
+        "status": "completed",
+        "__v": 0
+    }
+]

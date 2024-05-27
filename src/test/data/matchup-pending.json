@@ -1,0 +1,21 @@
+{
+  "_id": {
+    "$oid": "6652e88c445a48b00b5d7c5a"
+  },
+  "player1": {
+    "id": {
+      "$oid": "6652e854445a48b00b5d7c48"
+    }
+  },
+  "player2": {
+    "id": {
+      "$oid": "6652e859445a48b00b5d7c4c"
+    }
+  },
+  "date": {
+    "$date": "1995-12-17T03:24:02.000Z"
+  },
+  "game": "valorant",
+  "status": "pending",
+  "__v": 0
+}

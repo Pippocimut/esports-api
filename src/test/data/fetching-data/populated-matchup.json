@@ -1,0 +1,23 @@
+{
+    "player1": {
+        "id": {
+            "_id": "6652e85d445a48b00b5d7c50",
+            "username": "testdude23",
+            "__v": 0
+        },
+        "score": 3
+    },
+    "player2": {
+        "id": {
+            "_id": "6652e860445a48b00b5d7c54",
+            "username": "testdude234",
+            "__v": 0
+        },
+        "score": 0
+    },
+    "_id": "6652e8a9445a48b00b5d7c6e",
+    "date": "1995-12-17T03:24:02.000Z",
+    "game": "valorant",
+    "status": "completed",
+    "__v": 0
+}
