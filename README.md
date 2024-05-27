@@ -6,8 +6,8 @@ This is a API for a e-sport platform that allow players to be registered, put in
 
 ### Prerequisites
 
-Download Node.js and npm here: <https://nodejs.org/en/>
-[MongoDB Atlas](https://www.mongodb.com/cloud/atlas) connection string
+- Download Node.js and npm here: <https://nodejs.org/en/>
+- [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) connection string
 
 ### Installation
 
