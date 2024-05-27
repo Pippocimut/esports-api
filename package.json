@@ -20,7 +20,6 @@
     "sinon": "^18.0.0"
   },
   "devDependencies": {
-    "esm": "^3.2.25",
     "sinon-chai": "^3.7.0",
     "supertest": "^7.0.0"
   }
