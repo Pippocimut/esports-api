@@ -18,6 +18,7 @@ This is a API for a e-sport platform that allow players to be registered, put in
     ```text
     DB_URI={your databse connection string}
     PORT={preferred port}
+    TESTING_DB_URI={your databse connection string, you can use DB_URI if don't have a separate testing DB}
     ```  
 
 3. `npm start`
